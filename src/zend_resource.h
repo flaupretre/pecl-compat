@@ -46,6 +46,8 @@
  * segfaults.
  */
 
+#include "zend_list.h"
+
 /**
  * Deletes the resource.
  *
@@ -91,6 +93,8 @@ static void compat_zend_delete_resource(const zval *zv TSRMLS_DC)
 	zend_list_close(Z_RES_P(zv));
 }
 
+/*---------*/
+
 static void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, int rsrc_type TSRMLS_DC)
 {
 	if (IS_RESOURCE != Z_TYPE_P(zv)) {
@@ -99,6 +103,8 @@ static void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, in
 
 	return zend_fetch_resource(Z_RES_P(zv), rsrc_type_name, rsrc_type);
 }
+
+/*---------*/
 
 static void compat_zend_register_resource(zval *zv, void *ptr, int rsrc_type TSRMLS_DC)
 {
@@ -111,6 +117,8 @@ static void compat_zend_register_resource(zval *zv, void *ptr, int rsrc_type TSR
 /* Used for destructors. */
 typedef zend_rsrc_list_entry zend_resource;
 
+/*---------*/
+
 static void compat_zend_delete_resource(const zval *zv TSRMLS_DC)
 {
 	if (IS_RESOURCE != Z_TYPE_P(zv)) {
@@ -120,6 +128,8 @@ static void compat_zend_delete_resource(const zval *zv TSRMLS_DC)
 	zend_list_delete(Z_LVAL_P(zv));
 }
 
+/*---------*/
+
 static void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, int rsrc_type TSRMLS_DC)
 {
 #if ZEND_MODULE_API_NO >= 20100412
@@ -128,6 +138,8 @@ static void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, in
 	return zend_fetch_resource(&zv TSRMLS_CC, -1, (char *)rsrc_type_name, NULL, 1, rsrc_type);
 #endif
 }
+
+/*---------*/
 
 static void compat_zend_register_resource(zval *zv, void *ptr, int rsrc_type TSRMLS_DC)
 {
