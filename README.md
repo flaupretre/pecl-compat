@@ -10,6 +10,8 @@ Project home : [https://github.com/flaupretre/pecl-compat](https://github.com/fl
 
 - A backport of most PHP 7 *zend_hash* features to PHP 5.
 
+- A compatibility library for simple resource handling
+
 # Examples
 
 For examples of using this library, look at the [PCS extension](https://github.com/flaupretre/pecl-pcs). There, you will see usage examples of most *pecl-compat* features.
@@ -29,4 +31,3 @@ So, I reverted to the solution of keeping a single source tree and move most of 
 # Supported PHP versions
 
 5.3 and above.
-
