@@ -16,7 +16,7 @@ For examples of using this library, look at the [PCS extension](https://github.c
 
 # Usage
 
-Using the library is simple. Download the latest release from the [github repository](https://github.com/flaupretre/pecl-compat/releases) and insert it in your code tree. Then, include the 'compat.h' file in every '.c' source file.
+Using the library is simple. Download the latest release from the [github repository](https://github.com/flaupretre/pecl-compat/releases) and insert it in your code tree. Then, include the 'compat.h' file in every '.c' source file **after** the normal PHP includes.
 
 # History
 
