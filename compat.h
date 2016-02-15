@@ -104,5 +104,6 @@
 #include "src/misc.h"
 #include "src/zend_string.h"
 #include "src/zend_hash.h"
+#include "src/zend_API.h"
 
 #endif /* _COMPAT_H */
