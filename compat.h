@@ -19,7 +19,7 @@
 #ifndef _COMPAT_H
 #define _COMPAT_H
 
-#define PECL_COMPAT_VERSION 1.2
+#define PECL_COMPAT_VERSION 1.3
 
 #include <stdio.h>
 #include <assert.h>
