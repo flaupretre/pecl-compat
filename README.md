@@ -10,13 +10,15 @@ Project home : [https://github.com/flaupretre/pecl-pcs](https://github.com/flaup
 
 - An adaptation of most new zend_hash features for PHP 5
 
+- A compatibility library for simple resource handling
+
 # Examples
 
 For examples of using this library, look at the [PCS extension](https://github.com/flaupretre/pecl-pcs). There, you will see usage examples of almost every available features.
 
 # Usage
 
-Using the library is simple. Download the latest release from the [github repository](https://github.com/flaupretre/pecl-compat/releases) and insert it in your code tree. Then, include the 'compat.h' file in every '.c' source file.
+Using the library is simple. Download the latest release from the [github repository](https://github.com/flaupretre/pecl-compat/releases) and insert it in your code tree. Then, include the 'compat.h' file in every '.c' source file **after** the normal PHP includes.
 
 # History
 
@@ -29,4 +31,3 @@ So, I reverted to the solution of keeping a single source tree and move as much 
 # Supported PHP versions
 
 5.3 and above.
-
