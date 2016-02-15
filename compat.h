@@ -19,7 +19,7 @@
 #ifndef _COMPAT_H
 #define _COMPAT_H
 
-#define PECL_COMPAT_VERSION 1.2
+#define PECL_COMPAT_VERSION 1.3
 
 #include <stdio.h>
 #include <assert.h>
@@ -104,5 +104,6 @@
 #include "src/misc.h"
 #include "src/zend_string.h"
 #include "src/zend_hash.h"
+#include "src/zend_resource.h"
 
 #endif /* _COMPAT_H */
