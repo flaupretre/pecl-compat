@@ -56,7 +56,7 @@
  *
  * @param zv The IS_RESOURCE zval to delete.
  */
-static void compat_zend_delete_resource(const zval *zv TSRMLS_DC);
+static zend_always_inline void compat_zend_delete_resource(const zval *zv TSRMLS_DC);
 
 /**
  * Fetches the resource.
@@ -70,7 +70,7 @@ static void compat_zend_delete_resource(const zval *zv TSRMLS_DC);
  * @return A void pointer to the resource, which needs to be typecast, or NULL
  *         on error.
  */
-static void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, int rsrc_type TSRMLS_DC);
+static zend_always_inline void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, int rsrc_type TSRMLS_DC);
 
 /**
  * Registers a new resource.
@@ -79,12 +79,12 @@ static void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, in
  * @param ptr       A void pointer to the resource.
  * @param rsrc_type The resource type ID.
  */
-static void compat_zend_register_resource(zval *zv, void *ptr, int rsrc_type TSRMLS_DC);
+static zend_always_inline void compat_zend_register_resource(zval *zv, void *ptr, int rsrc_type TSRMLS_DC);
 
 #ifdef PHP_7
 /*============================================================================*/
 
-static void compat_zend_delete_resource(const zval *zv TSRMLS_DC)
+static zend_always_inline void compat_zend_delete_resource(const zval *zv TSRMLS_DC)
 {
 	if (IS_RESOURCE != Z_TYPE_P(zv)) {
 		return;
@@ -95,7 +95,7 @@ static void compat_zend_delete_resource(const zval *zv TSRMLS_DC)
 
 /*---------*/
 
-static void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, int rsrc_type TSRMLS_DC)
+static zend_always_inline void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, int rsrc_type TSRMLS_DC)
 {
 	if (IS_RESOURCE != Z_TYPE_P(zv)) {
 		return NULL;
@@ -106,7 +106,7 @@ static void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, in
 
 /*---------*/
 
-static void compat_zend_register_resource(zval *zv, void *ptr, int rsrc_type TSRMLS_DC)
+static zend_always_inline void compat_zend_register_resource(zval *zv, void *ptr, int rsrc_type TSRMLS_DC)
 {
 	ZVAL_RES(zv, zend_register_resource(ptr, rsrc_type));
 }
@@ -119,7 +119,7 @@ typedef zend_rsrc_list_entry zend_resource;
 
 /*---------*/
 
-static void compat_zend_delete_resource(const zval *zv TSRMLS_DC)
+static zend_always_inline void compat_zend_delete_resource(const zval *zv TSRMLS_DC)
 {
 	if (IS_RESOURCE != Z_TYPE_P(zv)) {
 		return;
@@ -130,7 +130,7 @@ static void compat_zend_delete_resource(const zval *zv TSRMLS_DC)
 
 /*---------*/
 
-static void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, int rsrc_type TSRMLS_DC)
+static zend_always_inline void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, int rsrc_type TSRMLS_DC)
 {
 #if ZEND_MODULE_API_NO >= 20100412
 	return zend_fetch_resource(&zv TSRMLS_CC, -1, rsrc_type_name, NULL, 1, rsrc_type);
@@ -141,7 +141,7 @@ static void *compat_zend_fetch_resource(zval *zv, const char *rsrc_type_name, in
 
 /*---------*/
 
-static void compat_zend_register_resource(zval *zv, void *ptr, int rsrc_type TSRMLS_DC)
+static zend_always_inline void compat_zend_register_resource(zval *zv, void *ptr, int rsrc_type TSRMLS_DC)
 {
 	ZEND_REGISTER_RESOURCE(zv, ptr, rsrc_type);
 }
